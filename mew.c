@@ -695,6 +695,20 @@ keyboard_handle_keymap(void *data, struct wl_keyboard *wl_keyboard,
 }
 
 static void
+keyboard_handle_leave(void *data, struct wl_keyboard *wl_keyboard,
+		uint32_t serial, struct wl_surface *surface)
+{
+	/*
+	 * In dmenu(1), if the keyboard cannot be grabbed, it will
+	 * immediately exit. This is done before dmenu is initialized,
+	 * but can't be the same for Wayland. If a new layer surface
+	 * wants keyboard, it will get keyboard, set_exclusivity doesn't
+	 * seem to work.
+	 */
+	 die("lost keyboard");
+}
+
+static void
 keyboard_handle_key(void *data, struct wl_keyboard *wl_keyboard,
 		uint32_t serial, uint32_t time, uint32_t key, uint32_t _key_state)
 {
@@ -754,7 +768,7 @@ keyboard_handle_repeat_info(void *data, struct wl_keyboard *wl_keyboard,
 static const struct wl_keyboard_listener keyboard_listener = {
 	.keymap = keyboard_handle_keymap,
 	.enter = noop,
-	.leave = noop,
+	.leave = keyboard_handle_leave,
 	.key = keyboard_handle_key,
 	.modifiers = keyboard_handle_modifiers,
 	.repeat_info = keyboard_handle_repeat_info,
@@ -994,7 +1008,7 @@ setup(void)
 		(top ? ZWLR_LAYER_SURFACE_V1_ANCHOR_TOP : ZWLR_LAYER_SURFACE_V1_ANCHOR_BOTTOM ) |
 		ZWLR_LAYER_SURFACE_V1_ANCHOR_LEFT | ZWLR_LAYER_SURFACE_V1_ANCHOR_RIGHT);
 	zwlr_layer_surface_v1_set_exclusive_zone(layer_surface, -1);
-	zwlr_layer_surface_v1_set_keyboard_interactivity(layer_surface, true);
+	zwlr_layer_surface_v1_set_keyboard_interactivity(layer_surface, 1);
 	zwlr_layer_surface_v1_add_listener(layer_surface, &layer_surface_listener, NULL);
 
 	wl_surface_commit(surface);
