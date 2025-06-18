@@ -803,14 +803,12 @@ static void
 surface_handle_preferred_scale(void *data,
 	struct wl_surface *wl_surface, int32_t factor)
 {
+	if (scale == factor)
+		return;
 	scale = factor;
 	loadfonts();
 
-	/* FIXME:
-	 * Use a callback to ensure the 'configure' event
-	 * is sent before the draw, which changes the dimensions
-	 * properly for the update in scale.
-	 */
+	/* the scale of the surface is only known after an initial draw, not before :( */
 	zwlr_layer_surface_v1_set_size(layer_surface, 0, mh / scale);
 	redraw();
 }
