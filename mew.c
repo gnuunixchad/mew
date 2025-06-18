@@ -419,7 +419,7 @@ insert(const char *str, ssize_t n)
 		return;
 	/* move existing text out of the way, insert new text, and update cursor */
 	memmove(&text[cursor + n], &text[cursor], sizeof text - cursor - MAX(n, 0));
-	if (n > 0)
+	if (str)
 		memcpy(&text[cursor], str, n);
 	cursor += n;
 	match();
