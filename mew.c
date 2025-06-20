@@ -938,30 +938,17 @@ run(void)
 
 	running = 1;
 	while (running) { 
-		if (wl_display_prepare_read(display) < 0)
-			if (wl_display_dispatch_pending(display) < 0)
-				die("wl_display_dispatch_pending:");
+		wl_display_flush(display);
 
-		if (wl_display_flush(display) < 0)
-			die("wl_display_flush:");
-
-		if (poll(pfds, LENGTH(pfds), -1) < 0) {
-			wl_display_cancel_read(display);
+		if (poll(pfds, LENGTH(pfds), -1) < 0)
 			die("poll:");
-		}
+
+		if (pfds[0].revents & POLLIN)
+			if (wl_display_dispatch(display) < 0)
+				die("display dispatch failed");
 
 		if (pfds[1].revents & POLLIN)
 			keyboard_repeat();
-
-		if (!(pfds[0].revents & POLLIN)) {
-			wl_display_cancel_read(display);
-			continue;
-		}
-
-		if (wl_display_read_events(display) < 0)
-			die("wl_display_read_events:");
-		if (wl_display_dispatch_pending(display) < 0)
-			die("wl_display_dispatch_pending:");
 	}
 }
 
