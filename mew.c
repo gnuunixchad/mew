@@ -784,6 +784,7 @@ layer_surface_handle_configure(void *data, struct zwlr_layer_surface_v1 *layer_s
 	mw = width * scale;
 	mh = height * scale;
 	inputw = mw / 3; /* input width: ~33% of output width */
+	match();
 	zwlr_layer_surface_v1_ack_configure(layer_surface, serial);
 	drawmenu();
 }
@@ -1010,8 +1011,6 @@ setup(void)
 	zwlr_layer_surface_v1_add_listener(layer_surface, &layer_surface_listener, NULL);
 
 	wl_surface_commit(surface);
-	wl_display_roundtrip(display); /* mysteriously required */
-	match();
 }
 
 static void
