@@ -1,5 +1,5 @@
 # <img src="./misc/mew-repo.png" width="24"/>My build of [mew](https://codeberg.org/sewn/mew)
-mew is a efficient dynamic menu for Wayland, an effective port of dmenu to Wayland.
+mew is an efficient dynamic menu for Wayland, an effective port of dmenu to Wayland.
 
 ## Building
 In order to build mew, ensure that you have the following dependencies:
