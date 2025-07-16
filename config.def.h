@@ -2,13 +2,13 @@
 /* Default settings; can be overriden by command line. */
 
 static int top              = 1;                       /* -b option; if 0, appear at bottom */
-static const char *fonts[]  = { "monospace:size=10" }; /* -f option overrides fonts[0] */
+static const char *fonts[]  = { "SourceCodePro:medium:size=13" }; /* -f option overrides fonts[0] */
 static const char *prompt   = NULL;                    /* -p option; prompt to the left of input field */
 static uint32_t colors[][2] = {
 	/*               fg         bg          */
-	[SchemeNorm] = { 0xbbbbbbff, 0x222222ff },
-	[SchemeSel]  = { 0xeeeeeeff, 0x005577ff },
-	[SchemeOut]  = { 0x000000ff, 0x00ffffff },
+	[SchemeNorm] = { 0xeeeeeeff, 0x111111ff },
+	[SchemeSel]  = { 0x111111ff, 0x83c07cff },
+	[SchemeOut]  = { 0x111111ff, 0x111111ff },
 };
 
 /* -m option; if provided, use that output instead of default output */
