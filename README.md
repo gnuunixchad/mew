@@ -1,4 +1,4 @@
-# My build of [mew](https://codeberg.org/sewn/mew)
+# <img src="./misc/mew-repo.png" width="24"/>My build of [mew](https://codeberg.org/sewn/mew)
 mew is a efficient dynamic menu for Wayland, an effective port of dmenu to Wayland.
 
 ## Building
