@@ -504,7 +504,7 @@ keyboard_keypress(enum wl_keyboard_key_state state, xkb_keysym_t sym)
 		case XKB_KEY_J: /* fallthrough */
 		case XKB_KEY_m: /* fallthrough */
 		case XKB_KEY_M: sym = XKB_KEY_Return; break;
-		case XKB_KEY_n: sym = XKB_KEY_Right; break;
+		case XKB_KEY_n: sym = XKB_KEY_Down; break;
 		case XKB_KEY_p: sym = XKB_KEY_Up; break;
 
 		case XKB_KEY_k: /* delete right */
