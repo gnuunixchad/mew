@@ -6,9 +6,9 @@ static const char *fonts[]  = { "SourceCodePro:medium:size=13" }; /* -f option o
 static const char *prompt   = NULL;                    /* -p option; prompt to the left of input field */
 static uint32_t colors[][2] = {
 	/*               fg         bg          */
-	[SchemeNorm] = { 0xeeeeeeff, 0x111111ff },
-	[SchemeSel]  = { 0x111111ff, 0x83c07cff },
-	[SchemeOut]  = { 0x111111ff, 0x111111ff },
+	[SchemeNorm] = { 0xeeeeeeff, 0x000000ff },
+	[SchemeSel]  = { 0xeeeeeeff, 0x427b58ff },
+	[SchemeOut]  = { 0x000000ff, 0x000000ff },
 };
 
 /* -m option; if provided, use that output instead of default output */
