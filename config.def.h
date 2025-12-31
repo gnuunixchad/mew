@@ -17,6 +17,9 @@ static const char *output_name = NULL;
 /* -l option; if nonzero, use vertical list with given number of lines */
 static unsigned int lines      = 0;
 
+/* -p option; display input as asterisks */
+static int passwd = 0;
+
 /*
  * Characters not considered part of a word while deleting words
  * for example: " /?\"&[]"

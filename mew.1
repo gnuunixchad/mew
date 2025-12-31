@@ -3,7 +3,7 @@
 mew \- menu for wayland
 .SH SYNOPSIS
 .B mew
-.RB [ \-beiv ]
+.RB [ \-beivP ]
 .RB [ \-l
 .IR lines ]
 .RB [ \-o
@@ -45,6 +45,10 @@ passing focus to the application ran.
 .TP
 .B \-i
 matches menu items case insensitively.
+.TP
+.B \-P
+do not directly display the keyboard input, but instead replace it with asterisks.
+All data from stdin will be ignored.
 .TP
 .BI \-l " lines"
 lists item vertically, with the given number of lines.
