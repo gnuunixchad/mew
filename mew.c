@@ -486,6 +486,7 @@ paste(void)
 	close(fds[0]);
 
 	wl_data_offer_destroy(data_offer);
+	data_offer = NULL;
 }
 
 static void
@@ -832,6 +833,9 @@ static void
 data_device_handle_selection(void *data, struct wl_data_device *data_device,
 		struct wl_data_offer *_data_offer)
 {
+	if (data_offer)
+		wl_data_offer_destroy(data_offer);
+
 	data_offer = _data_offer;
 }
 
